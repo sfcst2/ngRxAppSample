@@ -3,18 +3,18 @@ import { Car } from '../models/cars';
 import * as car from '../actions/car';
 
 
-export interface State {
+export interface CarState {
   ids: string[];
   entities: { [id: string]: Car };
 }
 
-export const initialState: State = {
+export const initialState: CarState = {
   ids: [],
   entities: {}
 };
 
-export function reducer(state = initialState, action: car.Actions): State {
-  console.log('!!!! In the reducers');
+export function reducer(state = initialState, action: car.Actions): CarState {
+
   switch (action.type) {
 
     case car.LOAD: {
@@ -32,13 +32,6 @@ export function reducer(state = initialState, action: car.Actions): State {
       };
     }
 
-  //  case car.LOAD_COMPLETED:
-  //   console.log('!!! Got the load completed')
-  //     return {
-  //         ids: state.ids,
-  //         entities: state.entities
-  //     };
-
     default: {
       return state;
     }
@@ -54,9 +47,9 @@ export function reducer(state = initialState, action: car.Actions): State {
  * use-case.
  */
 
-export const getEntities = (state: State) => state.entities;
+export const getEntities = (state: CarState) => state.entities;
 
-export const getIds = (state: State) => state.ids;
+export const getIds = (state: CarState) => state.ids;
 
 export const getAll = createSelector(getEntities, getIds, (entities, ids) => {
   return ids.map(id => entities[id]);
