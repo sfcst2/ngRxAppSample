@@ -44,7 +44,7 @@ import * as fromCars from './cars';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  cars: fromCars.State;
+  cars: fromCars.CarState;
 }
 
 
